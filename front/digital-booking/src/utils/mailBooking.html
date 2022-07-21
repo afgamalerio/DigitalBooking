@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <title>Mail de bienvenida</title>
+</head>
+
+<body style="width: 100%;">
+    <table style="border-collapse:collapse;border:0;border-spacing:0; ">
+        <tr>
+            <td>
+                <h1
+                    style="width:100%;border-collapse:collapse;border:0;border-spacing:0; font-family: Poppins; margin-bottom: 0; color: #263238;">
+                    ¡Hola
+                    ${valores.name}!</h1>
+                <p
+                    style="width:100%;border-collapse:collapse;border:0;border-spacing:0; font-family: Poppins; margin-top: 6px; color: #263238;">
+                    Tu
+                    reserva se ha realizado correctamente</p>
+                <ul style="font-family: Poppins; color: #263238;">
+                    <li><b>Hospedaje:</b> ${productData.category.title} ${productData.name}</li>
+                    <li><b>Ciudad:</b> ${productData.city.name}, ${productData.city.country_name}</li>
+                    <li><b>Fecha de entrada:</b> ${startDate} ${selectedTime}:00hs</li>
+                    <li><b>Fecha de salida:</b> ${finishDate}</li>
+                </ul>
+                <b
+                    style="width:100%;border-collapse:collapse;border:0;border-spacing:0; font-family: Poppins; color: #263238;">Gracias
+                    por elegir Digital Booking</b>
+            </td>
+        </tr>
+        <tr style="width:100%;border-collapse:collapse;border:0;border-spacing:0; background-color:#FFFBE2;">
+            <td>
+                <a href="http://digitalbookingpig1.click/">
+                    <img src="
+            https://pig1bucket.s3.amazonaws.com/imagenes%20producto/logo.png" alt="Logo Digital Booking"
+                        style="width: 120px; margin: 10px;" />
+                </a>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

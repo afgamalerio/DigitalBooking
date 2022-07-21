@@ -1,0 +1,29 @@
+@import "../../styles/variables/colors";
+
+.gallery-modal-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    background-color: $secondary;
+    opacity: 0.9;
+    right: 0;
+    z-index: 2;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+
+    .close-button {
+        color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        padding: 7%;
+        cursor: pointer;
+        font-size: 1.5rem;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+}

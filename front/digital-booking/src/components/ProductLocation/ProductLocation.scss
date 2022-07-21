@@ -1,0 +1,44 @@
+@import "../../styles/variables/colors";
+
+.p-location-container {
+    width: 100%;
+    padding: 0.2rem 2rem;
+    justify-content: space-between;
+    background-color: $tertiary;
+    color: white;
+
+    &-right {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        > p {
+            font-size: 0.8rem;
+            font-weight: 400;
+        }
+    }
+
+    &-left {
+        align-self: flex-end;
+        padding: 0.2rem;
+
+        &-text {
+            margin-right: 0.5rem;
+
+            > p {
+                font-size: 0.8rem;
+                font-weight: 400;
+            }
+        }
+
+        &-score {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $secondary;
+            color: white;
+            margin: 0;
+            padding: 0.2rem 1rem;
+            border-radius: 10px;
+        }
+    }
+}

@@ -1,0 +1,26 @@
+@import "../../styles/variables/colors";
+
+.p-map-container {
+    justify-content: flex-start;
+
+    h2 {
+        border-bottom: 1px solid $primary;
+        padding: 1rem 2rem;
+        color: $secondary;
+    }
+
+    .map-container {
+        padding: 1rem 2rem;
+
+        > p {
+            margin-bottom: 1rem;
+        }
+        #map {
+            height: 50vh;
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            z-index: 0;
+        }
+    }
+}

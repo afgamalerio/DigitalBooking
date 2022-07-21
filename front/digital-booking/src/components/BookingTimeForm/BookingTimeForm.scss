@@ -1,0 +1,14 @@
+@import "../../styles/variables/colors";
+
+.b-time-title {
+    color: $secondary;
+    margin-top: 2rem;
+    padding-bottom: 0.5rem;
+}
+
+.b-time-container {
+    padding: 1rem;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #5b80ad;
+}

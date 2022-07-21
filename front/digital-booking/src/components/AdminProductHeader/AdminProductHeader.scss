@@ -1,0 +1,16 @@
+@import "../../styles/variables/colors";
+
+.admin-form-header {
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem 1rem 2rem;
+    background-color: $secondary;
+    color: white;
+
+    .icon-arrow {
+        height: 2rem;
+        width: auto;
+        cursor: pointer;
+    }
+    
+}

@@ -1,0 +1,11 @@
+@import '../../styles/variables/colors';
+
+.icon-star {
+    font-size: 10px;
+    color: $primary;
+
+    &-disabled {
+        font-size: 10px;
+        color: #cfcfcf;
+    }
+}

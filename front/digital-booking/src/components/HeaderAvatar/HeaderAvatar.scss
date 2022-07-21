@@ -1,0 +1,59 @@
+@import "../../styles/variables/colors";
+
+.header-avatar-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    @media screen and (max-width: 540px) {
+        flex-direction: row-reverse;
+    }
+
+    .header-avatar-userButton {
+        color: $secondary;
+        border-right: 2px solid $primary;
+        cursor: pointer;
+        padding: 0.7rem;
+    }
+
+    .header-avatar-letters {
+        background-color: $secondary;
+        border-radius: 50%;
+        width: 3rem;
+        height: 3rem;
+        color: $background;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .header-avatar-text {
+        display: flex;
+        flex-direction: column;
+
+        h5 {
+            margin: 0;
+            color: $tertiary;
+
+            @media screen and (max-width: 540px) {
+                text-align: right;
+            }
+        }
+
+        .header-avatar-text-name {
+            color: $primary;
+
+            @media screen and (max-width: 540px) {
+                color: $secondary;
+            }
+        }
+    }
+
+    .header-avatar-logout {
+        cursor: pointer;
+
+        @media screen and (max-width: 540px) {
+            display: none;
+        }
+    }
+}

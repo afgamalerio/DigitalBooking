@@ -1,0 +1,60 @@
+@import '../../styles/variables/colors';
+
+.header-container {
+    margin: 0;
+    padding: 1rem 2rem;
+    background-color: $background;
+    position: fixed;
+    top: 0;
+    z-index: 3;
+    width: 100%;
+
+    @media (max-width: 720px) {
+        padding: 1rem;
+    }
+
+    .header-row{
+        justify-content: space-between;
+        align-items: center;
+
+        .header-logo-main-container {
+            display: flex;
+            flex-direction: row;
+    
+            .header-logo-container {
+                display: flex;
+                align-items: flex-end;
+                cursor: pointer;
+    
+                .header-logo {
+            
+                    @media (max-width: 768px) {
+                        width: 3.5rem;
+                        height: auto;
+                    }
+                }
+    
+                .header-title {
+                    font-weight: 300;
+                    color: $secondary;
+                    margin-left: 1rem;
+                    font-size: 1.2rem;
+    
+                    @media screen and (max-width:  768px) {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .header-button-burguer{
+        color: $tertiary;
+        display: none;
+    
+        @media screen and (max-width: 540px) {
+            display: block;
+        }
+      
+    }
+}

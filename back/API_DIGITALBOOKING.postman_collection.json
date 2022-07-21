@@ -1,0 +1,1827 @@
+{
+	"info": {
+		"_postman_id": "11f66e65-b4b5-4644-9f9b-fb97c08a1625",
+		"name": "API_DIGITALBOOKING",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CATEGORIAS",
+			"item": [
+				{
+					"name": "LISTAR CATEGORIAS",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Listar categorías status code 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{categories}}/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{categories}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREAR CATEGORIA",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Crear categoría hoteles\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.title).to.eql(\"Departamentos\");\r",
+									"    pm.expect(jsonData.description).to.eql(\"+ de 90.000\");\r",
+									"});\r",
+									"\r",
+									"console.log(pm.response.json().id);\r",
+									"pm.globals.set(\"test_category_id\", pm.response.json().id);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"Departamentos\",\r\n    \"description\": \"+ de 90.000\",\r\n    \"img\": \"https://images.unsplash.com/photo-1444201983204-c43cbd584d93?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGFwYXJ0JTIwaG90ZWx8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{categories}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{categories}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ACTUALIZAR CATEGORIA",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Actualizar categoría status code 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Actualizar categoría hoteles\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.title).to.eql(\"Hoteles\");\r",
+									"    pm.expect(jsonData.description).to.eql(\"807.500 hoteles\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"{{test_category_id}}\",\r\n    \"title\": \"Hoteles\",\r\n    \"description\": \"807.500 hoteles\",\r\n    \"img\": \"https://media.istockphoto.com/photos/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab-picture-id472899538?b=1&k=20&m=472899538&s=170667a&w=0&h=oGDM26vWKgcKA3ARp2da-H4St2dMEhJg23TTBeJgPDE=\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{categories}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{categories}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BUSCAR CATEGORIAS",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Buscar categoría por id, status code 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Chequear status code\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Buscar categoría id\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    console.log(jsonData.id);\r",
+									"    pm.expect(jsonData.id).to.eql(pm.globals.get(\"test_category_id\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{categories}}/{{test_category_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{categories}}",
+								"{{test_category_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ELIMINAR CATEGORIAS",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Eliminar categoría status code 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Chequear status code\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Eliminar categoría respuesta Eliminado correctamente\", function () {\r",
+									"    pm.response.to.have.body(\"Eliminado correctamente\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{categories}}/{{test_category_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{categories}}",
+								"{{test_category_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "IMAGENES",
+			"item": [
+				{
+					"name": "LISTAR IMAGENES",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Listar categorías status code 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{images}}/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{images}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREAR IMAGEN",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"});\r",
+									"\r",
+									"console.log(pm.response.json().id);\r",
+									"pm.globals.set(\"test_image_id\", pm.response.json().id);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"departamento\",\r\n    \"url\": \"https://images.unsplash.com/photo-1444201983204-c43cbd584d93?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGFwYXJ0JTIwaG90ZWx8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{images}}/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{images}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ACTUALIZAR IMAGEN",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Actualizar imagen status code 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Actualizar imagen\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.title).to.eql(\"Imagen actualizada\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"{{test_image_id}}\",\r\n    \"title\" : \"Imagen actualizada\",\r\n    \"url\": \"https://images.unsplash.com/photo-1444201983204-c43cbd584d93?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGFwYXJ0JTIwaG90ZWx8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{images}}/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{images}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BUSCAR IMAGEN",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Buscar imagen por id, status code 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Chequear status code\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Buscar imagen id\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    console.log(jsonData.id);\r",
+									"    pm.expect(jsonData.id).to.eql(pm.globals.get(\"test_image_id\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{images}}/{{test_image_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{images}}",
+								"{{test_image_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ASIGNAR UN PRODUCTO A UNA IMAGEN",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Chequear status code\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Respuesta\", function () {\r",
+									"    if(pm.response.to.have.status(200)){\r",
+									"    pm.response.to.have.body(\"Producto asignado correctamente\");\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{images}}/{{test_image_id}}/{{products}}/{{test_product_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{images}}",
+								"{{test_image_id}}",
+								"{{products}}",
+								"{{test_product_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ELIMINAR IMAGEN",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Eliminar categoría status code 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Chequear status code\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Eliminar categoría respuesta Eliminado correctamente\", function () {\r",
+									"    pm.response.to.have.body(\"Eliminado correctamente\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{images}}/{{test_image_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{images}}",
+								"{{test_image_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CARACTERISTICAS",
+			"item": [
+				{
+					"name": "LISTAR CARACTERISTICAS",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Listar características status code 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{features}}/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{features}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREAR CARACTERISTICA",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Crear caracteristica\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql(\"Estacionamiento gratuito\");\r",
+									"});\r",
+									"\r",
+									"console.log(pm.response.json().id);\r",
+									"pm.globals.set(\"test_caracteristica_id\", pm.response.json().id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Estacionamiento gratuito\",\r\n    \"icon\": \"car\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{features}}/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{features}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BUSCAR CARACTERISTICA",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Buscar por id, status code 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Chequear status code\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Buscar ciudad id\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    console.log(jsonData.id);\r",
+									"    pm.expect(jsonData.id).to.eql(pm.globals.get(\"test_caracteristica_id\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{features}}/{{test_caracteristica_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{features}}",
+								"{{test_caracteristica_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ACTUALIZAR CARACTERISTICA",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Actualizar característica status code 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Actualizar característica\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql(\"Pileta\");\r",
+									"    pm.expect(jsonData.icon).to.eql(\"swimmer\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"{{test_caracteristica_id}}\",\r\n    \"name\": \"Pileta\",\r\n    \"icon\": \"swimmer\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{features}}/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{features}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ELIMINAR CARACTERISTICA",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Eliminar caracteristica status code 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Chequear status code\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Eliminar caracteristica respuesta Eliminado correctamente\", function () {\r",
+									"    pm.response.to.have.body(\"Eliminado correctamente\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{features}}/{{test_caracteristica_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{features}}",
+								"{{test_caracteristica_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CIUDADES",
+			"item": [
+				{
+					"name": "LISTAR CIUDADES",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Listar ciudades status code 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{cities}}/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{cities}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREAR CIUDAD",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Crear ciudad Buenos Aires\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql(\"Buenos Aires\");\r",
+									"    pm.expect(jsonData.country_name).to.eql(\"Argentina\");\r",
+									"});\r",
+									"\r",
+									"console.log(pm.response.json().id);\r",
+									"pm.globals.set(\"test_ciudad_id\", pm.response.json().id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Buenos Aires\",\r\n    \"country_name\": \"Argentina\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{cities}}/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{cities}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BUSCAR CIUDAD",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Buscar ciudad por id, status code 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Chequear status code\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Buscar ciudad id\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    console.log(jsonData.id);\r",
+									"    pm.expect(jsonData.id).to.eql(pm.globals.get(\"test_ciudad_id\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{cities}}/{{test_ciudad_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{cities}}",
+								"{{test_ciudad_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ACTUALIZAR CIUDAD",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Actualizar ciudad status code 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Actualizar ciudad Brasilia\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql(\"Brasilia\");\r",
+									"    pm.expect(jsonData.country_name).to.eql(\"Brasil\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"{{test_ciudad_id}}\",\r\n    \"name\": \"Brasilia\",\r\n    \"country_name\": \"Brasil\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{cities}}/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{cities}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ELIMINAR CIUDAD",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Eliminar ciudad status code 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Chequear status code\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Eliminar ciudad respuesta Eliminado correctamente\", function () {\r",
+									"    pm.response.to.have.body(\"Eliminado correctamente\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{cities}}/{{test_ciudad_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{cities}}",
+								"{{test_ciudad_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PRODUCTOS",
+			"item": [
+				{
+					"name": "LISTAR PRODUCTOS",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Listar productos status code 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{products}}/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{products}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREAR PRODUCTO",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Crear producto\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql(\"Departamento\");\r",
+									"    pm.expect(jsonData.description).to.eql(\"3 habitaciones\");\r",
+									"});\r",
+									"\r",
+									"console.log(pm.response.json().id);\r",
+									"pm.globals.set(\"test_product_id\", pm.response.json().id);\r",
+									"\r",
+									"pm.globals.set(\"test_policies_id\", pm.response.json().policies.id);\r",
+									"//Armo un email de prueba para la suite de testing\r",
+									"var nro = pm.response.json().id;\r",
+									"var email_user = \"admin\" + nro + \"@gmail.com\";\r",
+									"console.log(email_user.toString());\r",
+									"pm.globals.set(\"test_email_user\", email_user.toString());\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Departamento\",\r\n    \"description\": \"3 habitaciones\",\r\n    \"title_description\" : \"Departamento luminoso\",\r\n    \"rating\" : 2,\r\n    \"latitude\": -1.28193620608147,\r\n    \"longitude\": 36.8440927319217,\r\n    \"category\": {\r\n                    \"id\" : {{test_category_id}}\r\n                },\r\n    \"city\" : {\r\n                \"id\": {{test_ciudad_id}}\r\n            },\r\n    \"images\": [\r\n        {\r\n            \"id\": {{test_image_id}}\r\n        }\r\n     ],\r\n    \"features\": [\r\n                    {\r\n                        \"id\": {{test_caracteristica_id}}\r\n                    }\r\n                ],\r\n    \"policies\": {\r\n                \"rules\": \"Check-out 10:00hs;\\nNo se permiten fiestas;\\nNo fumar\",\r\n                \"security\": \"Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus;\\nDetector de humo;\\nDepósito de seguridad\",\r\n                \"cancellation\": \"Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía\"\r\n            }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{products}}/auth",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{products}}",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ACTUALIZAR PRODUCTO",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Actualizar producto status code\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 200]);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : {{test_product_id}},\r\n    \"name\" : \"HOTEL\",\r\n    \"description\": \"3 habitaciones\",\r\n    \"title_description\" : \"Departamento luminoso\",\r\n    \"rating\" : 2,\r\n    \"latitude\": -1.28193620608147,\r\n    \"longitude\": 36.8440927319217,\r\n    \"category\": {\r\n                    \"id\" : {{test_category_id}}\r\n                },\r\n    \"city\" : {\r\n                \"id\": {{test_ciudad_id}}\r\n            },\r\n    \"images\": [\r\n        {\r\n            \"id\": {{test_image_id}}\r\n        }\r\n     ],\r\n    \"features\": [\r\n                    {\r\n                        \"id\": {{test_image_id}}\r\n                    }\r\n                ],\r\n    \"policies\": {\r\n                \"id\" : {{test_policies_id}},\r\n                \"rules\": \"Check-out 10:00hs;\\nNo se permiten fiestas;\\nNo fumar\",\r\n                \"security\": \"Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus;\\nDetector de humo;\\nDepósito de seguridad\",\r\n                \"cancellation\": \"Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía\"\r\n            }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{products}}/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{products}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BUSCAR PRODUCTO",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Chequear status code\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{products}}/{{test_product_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{products}}",
+								"{{test_product_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTAR PRODUCTOS POR CATEGORÍA",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Chequear status code\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{products}}/{{categories}}/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{products}}",
+								"{{categories}}",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTAR PRODUCTOS POR CIUDAD",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Chequear status code\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{products}}/{{cities}}/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{products}}",
+								"{{cities}}",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTAR PRODUCTOS RECOMENDADOS",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Chequear status code\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{products}}/{{rating}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{products}}",
+								"{{rating}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FILTRAR PRODUCTOS POR",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Chequear status code\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/{{products}}/filter/1/2021-12-08T20:00:00.000+00:00/2021-12-15T20:00:00.000+00:00",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{products}}",
+								"filter",
+								"1",
+								"2021-12-08T20:00:00.000+00:00",
+								"2021-12-15T20:00:00.000+00:00"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FILTRAR PRODUCTOS POR FECHAS",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Chequear status code\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt_token}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/{{products}}/{{filterDates}}/2021-12-20/2021-12-27",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{products}}",
+								"{{filterDates}}",
+								"2021-12-20",
+								"2021-12-27"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ELIMINAR PRODUCTO",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Eliminar producto status code 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Chequear status code\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Eliminar producto respuesta Eliminado correctamente\", function () {\r",
+									"    pm.response.to.have.body(\"Eliminado correctamente\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{products}}/{{test_product_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{products}}",
+								"{{test_product_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTAR PRODUCTOS PAGEABLE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Listar productos status code 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{products}}/page",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{products}}",
+								"page"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTAR PRODUCTOS RATING PAGEABLE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Listar productos status code 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{products}}/{{rating}}/page",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{products}}",
+								"{{rating}}",
+								"page"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "USUARIOS",
+			"item": [
+				{
+					"name": "CREAR USUARIO",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Usuario\",\r\n    \"lastname\": \"Rodríguez\",\r\n    \"email\": \"usuario@gmail.com\",\r\n    \"password\" : \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{users}}/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{users}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTAR USUARIOS",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Chequear status code\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"console.log(jsonData.length)\r",
+									"var lastUser = jsonData[jsonData.length - 1]\r",
+									"console.log(lastUser.id)\r",
+									"\r",
+									"pm.globals.set(\"test_user_id\", lastUser.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{users}}/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{users}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LOGIN",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Chequear status code\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204, 409]);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"var data = JSON.parse(responseBody);\r",
+									"if (data.jwt) {\r",
+									"    postman.setEnvironmentVariable(\"jwt_token\", data.jwt);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"usuario@gmail.com\",\r\n    \"password\" : \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/authenticate",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ELIMINAR USUARIO",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Chequear status code\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Eliminar usuario respuesta Eliminado correctamente\", function () {\r",
+									"    pm.response.to.have.body(\"Eliminado correctamente\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{users}}/{{test_user_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{users}}",
+								"{{test_user_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "RESERVAS",
+			"item": [
+				{
+					"name": "Crear reserva con jwt",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"});\r",
+									"\r",
+									"console.log(pm.response.json().id);\r",
+									"pm.globals.set(\"test_reserva_id\", pm.response.json().id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startHour\":\"2021-11-18T20:00\",\r\n    \"startDate\":\"2022-01-18\",\r\n    \"finishDate\":\"2022-01-28\",\r\n    \"comments\": \"comentarios\",\r\n    \"vaccinated\": 0,\r\n\r\n    \"product\" : {\r\n    \"id\": 1\r\n    \r\n},\r\n    \"user\" : {\r\n        \"id\": {{test_user_id}}\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/newreservation",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"newreservation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTAR RESERVAS",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Listar reservas status code 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{reservations}}/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{reservations}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BUSCAR RESERVA",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Buscar reserva por id, status code 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Chequear status code\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Buscar reserva id\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    console.log(jsonData.id);\r",
+									"    pm.expect(jsonData.id).to.eql(pm.globals.get(\"test_reserva_id\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{reservations}}/{{test_reserva_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{reservations}}",
+								"{{test_reserva_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTAR RESERVA POR PRODUCTO",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Chequear status code\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{reservations}}/{{products}}/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{reservations}}",
+								"{{products}}",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTAR RESERVA POR USUARIO",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Chequear status code\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{reservations}}/{{users}}/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{reservations}}",
+								"{{users}}",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ELIMINAR RESERVA",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Eliminar reserva status code 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Chequear status code\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Eliminar reserva respuesta Eliminado correctamente\", function () {\r",
+									"    pm.response.to.have.body(\"Eliminado correctamente\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{reservations}}/{{test_reserva_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{reservations}}",
+								"{{test_reserva_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SEND EMAIL",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"email\": \"luciayanicelli@gmail.com\",\r\n\"content\": \"Contenido de email\",\r\n\"subject\": \"Subject de email\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/{{email}}/{{send}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"{{email}}",
+						"{{send}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "categorias",
+			"value": "categories"
+		},
+		{
+			"key": "products",
+			"value": "products"
+		},
+		{
+			"key": "categories",
+			"value": "categories"
+		},
+		{
+			"key": "cities",
+			"value": "cities"
+		},
+		{
+			"key": "features",
+			"value": "features"
+		},
+		{
+			"key": "images",
+			"value": "images"
+		},
+		{
+			"key": "rating",
+			"value": "rating"
+		},
+		{
+			"key": "baseUrl",
+			"value": "http://34.201.219.134:8082"
+		},
+		{
+			"key": "users",
+			"value": "users"
+		},
+		{
+			"key": "reservations",
+			"value": "reservations"
+		},
+		{
+			"key": "filterDates",
+			"value": "filterDates"
+		},
+		{
+			"key": "email",
+			"value": "email"
+		},
+		{
+			"key": "send",
+			"value": "send"
+		}
+	]
+}

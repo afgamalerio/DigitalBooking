@@ -1,0 +1,40 @@
+@import '../../styles/variables/colors';
+
+.policies-container {
+    background: white;
+
+    h2{
+        border-bottom: 1px solid $primary;
+        padding: 1rem 2rem;
+        color: $secondary;
+    }
+
+    .policies-container-description{
+        max-width: 1200px;
+        margin: 0;
+        padding: 1rem 2rem;
+        display: grid;
+        grid-gap: 2rem;
+
+        @media (min-width: 768px) {
+             grid-template-columns: repeat(2, 1fr); 
+          }
+
+        @media (min-width: 900px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+
+        h3{
+            color: $tertiary;
+            padding: 0.5rem 0;
+        }
+
+        ul li{
+            list-style: none;
+            padding: 0.5rem 0;
+        }
+    }
+
+
+}

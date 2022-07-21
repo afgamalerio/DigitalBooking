@@ -1,0 +1,64 @@
+@import "../../styles/variables/colors";
+
+.b-details-container {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #5b80ad;
+    margin-top: 2.5rem;
+
+    .b-details-title {
+        padding: 1rem;
+    }
+    .b-details-img-description {
+        @media (max-width: 768px) {
+            display: flex;
+            flex-direction: row;
+        }
+
+        @media (max-width: 540px) {
+            display: flex;
+            flex-direction: column;
+        }
+        .b-img {
+            width: 100%;
+            object-fit: cover;
+
+            @media (max-width: 768px) {
+                width: 50%;
+            }
+
+            @media (max-width: 540px) {
+                width: 100%;
+            }
+        }
+
+        .b-description {
+            padding: 1rem;
+            @media (max-width: 768px) {
+                width: 50%;
+            }
+            @media (max-width: 540px) {
+                width: 100%;
+            }
+
+            > p {
+                padding-top: 1rem;
+            }
+
+            .b-check {
+                padding: 0 1rem;
+                display: flex;
+                justify-content: space-between;
+                border-top: 1px solid $tertiary;
+
+                > p {
+                    padding: 1rem;
+                }
+            }
+
+            .details-button {
+                width: 100%;
+            }
+        }
+    }
+}

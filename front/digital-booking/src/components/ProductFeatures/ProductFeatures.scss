@@ -1,0 +1,38 @@
+@import "../../styles/variables/colors";
+
+.features-container {
+    h2 {
+        border-bottom: 1px solid $primary;
+        padding: 1rem 2rem;
+        color: $secondary;
+    }
+
+    .features-container-description {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-gap: 1rem;
+        padding: 1rem;
+        grid-template-columns: repeat(2, 1fr);
+
+        @media (min-width: 900px) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        @media (max-width: 768px) {
+            grid-gap: 0.5rem;
+            padding: 1.5rem;
+        }
+
+        .features-description {
+            display: inline-flex;
+            padding: 1rem;
+            align-items: center;
+
+            .feature-icon {
+                color: $primary;
+                margin-right: 1rem;
+            }
+        }
+    }
+}

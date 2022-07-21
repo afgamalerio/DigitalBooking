@@ -1,0 +1,35 @@
+@import "../../styles/variables/colors";
+
+.button {
+    &-full {
+        border: none;
+        border-radius: 5px;
+        padding: 0.3rem 2rem;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+        background-color: $primary;
+        color: white;
+        filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.12));
+
+        &:hover {
+            background-color: #eeab00;
+        }
+    }
+
+    &-outlined {
+        border-radius: 5px;
+        padding: 0.3rem 2rem;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+        border: 1px solid $primary;
+        color: $primary;
+        background-color: $background;
+
+        &:hover {
+            background-color: $primary;
+            color: white;
+        }
+    }
+}

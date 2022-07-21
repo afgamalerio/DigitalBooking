@@ -1,0 +1,19 @@
+@import "../../styles/variables/colors";
+
+.b-calendar-title {
+    color: $secondary;
+    margin-top: 2rem;
+    padding-bottom: 0.5rem;
+}
+
+.b-calendar-container {
+    width: 100%;
+
+    .rmdp-wrapper {
+        width: 100%;
+
+        .rmdp-top-class {
+            justify-content: center;
+        }
+    }
+}

@@ -1,0 +1,24 @@
+@import "../../styles/variables/colors";
+@import "~react-image-gallery/styles/scss/image-gallery.scss";
+
+.product-container {
+    display: flex;
+    flex-direction: column;
+    background-color: $background;
+    margin: 4rem 0;
+    width: 100%;
+
+    .details-container {
+        background-color: white;
+
+        &-icons {
+            padding: 1rem 2rem;
+            padding-bottom: 1rem;
+            color: $secondary;
+
+            .icon-share {
+                margin-left: 0.7rem;
+            }
+        }
+    }
+}

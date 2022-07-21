@@ -1,0 +1,89 @@
+@import "../../styles/variables/colors";
+
+.login-container {
+    margin: 0;
+    padding: 1rem 2rem;
+    background-color: $background;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    .login-title {
+        text-align: center;
+        color: $primary;
+        font-weight: 700;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+
+        @media (max-width: 768px) {
+            font-size: 1.3rem;
+        }
+    }
+    .login-form {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        justify-content: space-around;
+        width: 70%;
+        max-width: 500px;
+
+        @media (max-width: 768px) {
+            width: 100%;
+        }
+
+        .login-form-label {
+            color: $secondary;
+            text-align: left;
+            margin: 5px;
+            font-size: 0.8rem;
+            margin-top: 1rem;
+        }
+        .login-form-input {
+            padding: 1rem;
+            width: 100%;
+            height: 40px;
+            border-radius: 5px;
+            border-width: 0px;
+            font-family: Poppins;
+        }
+        .login-form-submit {
+            width: 60%;
+            margin: 1rem;
+            align-self: center;
+
+            @media (max-width: 1024px) {
+                width: 100%;
+            }
+        }
+
+        .error {
+            font-size: 0.7rem;
+            color: red;
+            text-align: end;
+            margin-top: 0.5rem;
+        }
+    }
+
+    .login-subtext {
+        display: flex;
+        text-align: center;
+        font-size: 0.8rem;
+
+        .login-subtext-link {
+            margin-left: 0.5rem;
+            color: blue;
+            cursor: pointer;
+        }
+    }
+    
+    .form-error {
+        width: 100%;
+        font-size: 0.7rem;
+        color: red;
+        text-align: center;
+        margin-top: 0.5rem;
+    }
+}

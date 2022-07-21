@@ -1,0 +1,43 @@
+@import '../../styles/variables/colors';
+
+.footer-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    background-color: $primary;
+    padding: 1rem 2rem;
+    position: fixed;
+    bottom: 0;
+    z-index: 3;
+
+    @media (max-width: 700px) {
+        padding: 1rem;
+    }
+
+    .footer-text-container {
+        display: flex;
+        align-items: center;
+
+        .footer-text {
+            margin: 0;
+
+            @media (max-width: 700px) {
+                font-size: 0.75rem;
+            }
+        }
+    }
+
+    .footer-social-container {
+
+        .footer-social-icon{
+            color: white;
+            height: 1.5rem;
+            width: auto;
+            margin: 0 0.5rem;
+
+            @media (max-width: 700px) {
+                display: none;
+            }
+        }
+    }
+}

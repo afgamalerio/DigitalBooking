@@ -1,0 +1,117 @@
+@import "../../styles/variables/colors";
+@import "~react-image-gallery/styles/scss/image-gallery.scss";
+
+.p-gallery-container {
+    height: 400px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1.5rem;
+
+    &-principal {
+        display: flex;
+        height: 100%;
+        width: 50%;
+
+        &-img {
+            border-radius: 20px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            padding: 0.5rem;
+        }
+    }
+
+    &-secondary {
+        display: flex;
+        flex-wrap: wrap;
+        width: 50%;
+        height: 100%;
+        position: relative;
+
+        &-img {
+            border-radius: 20px;
+            width: 48%;
+            height: 47%;
+            background-color: grey;
+            margin: auto;
+            object-fit: cover;
+        }
+
+        .p-gallery-button {
+            position: absolute;
+            bottom: 1rem;
+            right: 1.5rem;
+            color: white;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+}
+
+.gallery {
+    margin-top: 2rem;
+    width: 40%;
+    opacity: 1;
+
+    @media (max-width: 1024px) {
+        width: 50%;
+        margin: 0;
+    }
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+
+    .image-gallery-image {
+        max-height: 50%;
+        border-radius: 20px;
+        filter: inherit;
+
+        @media (max-width: 768px) {
+            border-radius: 0;
+        }
+    }
+    .image-gallery-icon {
+        padding: 0;
+        margin: 1rem;
+
+        .image-gallery-svg {
+            height: 2rem;
+            width: 2rem;
+            border-radius: 50%;
+            background-color: $secondary;
+            stroke-width: 1.5;
+
+            &:hover {
+                stroke: white;
+            }
+        }
+    }
+
+    .image-gallery-index {
+        bottom: 0;
+        top: inherit;
+        right: 45%;
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    .image-gallery-thumbnail {
+        border-radius: 20px;
+
+        &.active,
+        &:hover {
+            border: none;
+            outline: none;
+        }
+
+        .image-gallery-thumbnail-inner {
+            border-radius: 20px;
+            .image-gallery-thumbnail-image {
+                border-radius: 20px;
+                height: 5rem;
+                width: 6rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+@import '../../styles/variables/colors';
+
+.p-header-container{
+    width: 100%;
+    justify-content: space-between;
+    background-color: $secondary;
+    padding: 1.5rem 2rem 0.5rem 2rem; 
+    color: white;
+
+    .left-container{
+        align-self: flex-start;
+
+        &-subtitle {
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+    }
+
+    .right-container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .icon-arrow {
+            height: 2rem;
+            width: auto;
+            cursor: pointer;
+        }
+    }
+}

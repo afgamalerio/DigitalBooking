@@ -1,0 +1,33 @@
+@import "../../styles/variables/colors";
+
+.main-container-b {
+    display: flex;
+    flex-direction: column;
+    background-color: $background;
+    padding: 4rem 0;
+    width: 100%;
+
+    .booking-container {
+        justify-content: space-evenly;
+        padding: 2rem;            
+        @media (max-width: 768px) {
+            flex-direction: column;
+        }
+
+        .booking-form-container {
+            width: 60%;
+
+            @media (max-width: 768px) {
+                width: 100%;
+            }
+        }
+
+        .booking-details-container {
+            width: 30%;
+
+            @media (max-width: 768px) {
+                width: 100%;
+            }
+        }
+    }
+}

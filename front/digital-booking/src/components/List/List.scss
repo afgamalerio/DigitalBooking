@@ -1,0 +1,63 @@
+@import "../../styles/variables/colors";
+
+.list-title-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem;
+    background-color: $background;
+
+    @media (max-width: 768px) {
+        padding: 1rem;
+    }
+
+    .list-title-container-filter{
+        display: flex;
+        justify-content: space-between;
+
+        .list-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: $secondary;
+            margin-bottom: 0.5rem;
+        }
+    } 
+
+    .list-container {
+        padding: 0.5rem 0 4rem 0;
+        flex-wrap: wrap;
+        width: 100%;
+        align-items: center;
+        justify-content: space-around;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @media (max-width: 1024px) {
+            flex-direction: column;
+            flex-wrap: nowrap;
+        }
+
+        @media (max-width: 540px) {
+            flex-direction: column;
+            align-items: center;
+            padding: 0 0 2rem 0;
+        }
+
+        .list-card-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .list-pagination{
+            margin-top: 1rem;
+            ul{
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                list-style-type: none;
+            }
+        }
+    }
+}

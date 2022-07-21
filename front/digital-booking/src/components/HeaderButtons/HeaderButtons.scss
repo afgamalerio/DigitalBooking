@@ -1,0 +1,28 @@
+@import '../../styles/variables/colors';
+
+.header-row{
+        justify-content: space-between;
+
+        .header-button-container{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            
+            .header-button {
+                margin-left: 0.7rem;
+    
+                @media screen and (max-width:  540px) {
+                    display: none;
+                }
+            }
+    
+            .header-button-burguer{
+                color: $tertiary;
+                display: none;
+    
+                @media screen and (max-width: 540px) {
+                    display: block;
+                }
+              }
+            }
+}
